@@ -1,15 +1,15 @@
 {
-  "name": "node-sitef",
-  "version": "1.4.0",
-  "repository": "https://github.com/danielccunha/node-sitef",
-  "homepage": "https://github.com/danielccunha/node-sitef",
+  "name": "sitef-voai",
+  "version": "1.0.4",
+  "description": "Arquivos para utilização da Sitef",
+  "repository": "https://bitbucket.org/inteliger_git/voai_sitef",
+  "homepage": "https://bitbucket.org/inteliger_git/voai_sitef",
   "author": {
-    "name": "Daniel Cunha",
-    "email": "danielcunha54@gmail.com",
-    "url": "https://github.com/danielccunha"
+    "name": "Inteliger",
+    "email": "sistemas@inteliger.com.br",
+    "url": "https://inteliger.com.br"
   },
   "license": "GPL-3.0",
-  "bugs": "https://github.com/danielccunha/node-sitef/issues",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -44,16 +44,6 @@
     "typescript": "^3.9.5"
   },
   "contributors": [
-    {
-      "name": "Daniel Cunha",
-      "email": "danielcunha54@gmail.com",
-      "url": "https://github.com/danielccunha"
-    },
-    {
-      "name": "Felipe Furst",
-      "email": "fefurst@gmail.com",
-      "url": "https://github.com/fefurst"
-    }
   ],
   "files": [
     "dist/**/*",
