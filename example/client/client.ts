@@ -1,5 +1,5 @@
 import path from 'path';
-import chalk from 'chalk';
+
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
@@ -11,28 +11,26 @@ import { messages, askQuestion, handleError } from '../shared/utils';
 const dlls = path.resolve(__dirname, '..', 'shared', 'bin', 'CliSiTef64I.dll');
 const sitef = new SiTef(dlls);
 
-// Função auxiliar para adicionar a timestamp nos logs
-const now = () => chalk.green(`[${moment().format('LTS')}]`);
 
 export const configurar = async () => {
-  console.log(`\n${now()} Configurando o SiTef`);
+  console.log(`\n Configurando o SiTef`);
 
   try {
     const response = await sitef.configurar(config);
     const message = messages.configuracao[response];
-    console.log(now(), message, '\n');
+    console.log(message, '\n');
   } catch (error) {
     handleError(error);
   }
 };
 
 export const verificarPresenca = async () => {
-  console.log(`\n${now()} Verificando a presença do PinPad`);
+  console.log(`\n Verificando a presença do PinPad`);
 
   try {
     const response = await sitef.verificarPresenca();
     const message = messages.verificacaoPresenca[response];
-    console.log(now(), message, '\n');
+    console.log(message, '\n');
   } catch (error) {
     handleError(error);
   }
@@ -51,7 +49,6 @@ export const escreverMensagem = async () => {
         ? 'Mensagem escrita com sucesso.'
         : 'Não foi possível escrever a mensagem.';
 
-    console.log(`\n${now()}`, message, '\n');
   } catch (error) {
     handleError(error);
   }
@@ -76,7 +73,7 @@ export const simularFuncao = async () => {
     const valor = await askQuestion('Qual o valor? ');
 
     // Inicia a função
-    console.log(`\n${now()} Iniciando a função`);
+    console.log(`\nIniciando a função`);
 
     // Envia o objeto contendo os dados da função. Esses dados são específicos do SiTef que estou utilizando,
     // então fique a vontade para alterar os parâmetros
@@ -105,10 +102,9 @@ export const simularFuncao = async () => {
 
       // Escreve as mensagens de retorno e de buffer, caso retornado alguma
       console.log(
-        now(),
         messages.funcao[ret] || `Retorno desconhecido (${ret})`
       );
-      if (buffer) console.log(now(), buffer);
+      if (buffer) console.log( buffer);
 
       // Limpa ou escreve no buffer, dependendo do comando
       if ([20, 21].includes(cmd) || (cmd >= 30 && cmd <= 35) || cmd === 42) {
@@ -135,7 +131,7 @@ export const simularFuncao = async () => {
     await sitef.finalizarFuncao(objFinalizacao);
 
     const message = messages.funcao[retorno];
-    console.log(now(), message, '\n');
+    console.log( message, '\n');
   } catch (error) {
     handleError(error);
   }

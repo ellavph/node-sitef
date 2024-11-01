@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 
 import { askQuestion } from '../shared/utils';
 import * as client from './client';
@@ -26,10 +25,10 @@ const options: { [index: string]: Option } = {
 const keys = Object.keys(options);
 
 function showMenu() {
-  console.log(chalk.green('\n\t\tSiTef Interativo\n'));
+  console.log('\n\t\tSiTef Interativo\n');
 
   for (const key in options) {
-    console.log(`- ${chalk.green(key + ':')} ${options[key].title}`);
+    console.log(`options[key].title`);
   }
 
   console.log();
@@ -43,7 +42,7 @@ const main = async () => {
     option = option ? option.toUpperCase() : '';
 
     if (!keys.includes(option)) {
-      console.log(chalk.red('Opção inválida! Digite novamente.\n'));
+      console.log('Opção inválida! Digite novamente.\n');
     } else {
       await options[option].handler();
 

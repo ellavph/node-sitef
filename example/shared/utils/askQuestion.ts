@@ -1,5 +1,4 @@
 import readline from 'readline';
-import chalk from 'chalk';
 
 export default (query: string): Promise<string> => {
   const rl = readline.createInterface({
@@ -9,7 +8,7 @@ export default (query: string): Promise<string> => {
   });
 
   return new Promise((resolve) =>
-    rl.question(chalk.yellow(query), (ans) => {
+    rl.question(query, (ans) => {
       rl.close();
       resolve(ans);
     })

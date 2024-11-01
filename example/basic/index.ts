@@ -1,5 +1,4 @@
 import path from 'path';
-import chalk from 'chalk';
 
 import SiTef from '../../src';
 import config from '../shared/config';
@@ -15,25 +14,25 @@ const main = async () => {
     let response = await sitef.configurar(config);
     let message = messages.configuracao[response];
     if (response !== 0) throw new Error(message);
-    console.log(chalk.green('ConfiguraIntSiTefInterativo:'), message);
+    console.log(message);
 
     // Verificando a presença do PinPad
     response = await sitef.verificarPresenca();
     message = messages.verificacaoPresenca[response];
     if (response !== 1) throw new Error(message);
-    console.log(chalk.green('VerificaPresencaPinPad:'), message);
+    console.log( message);
 
     // Escrevendo a mensagem permanente
     response = await sitef.escreverMensagem("I'm watching you");
     const title = 'EscreveMensagemPermanentePinPad:';
 
     if (response === 0) {
-      console.log(chalk.green(title), 'Mensagem escrita com sucesso.');
+      console.log('Mensagem escrita com sucesso.');
     } else {
-      console.log(chalk.red(title), 'Não foi possível escrever a mensagem.');
+      console.log('Não foi possível escrever a mensagem.');
     }
   } catch (error) {
-    return console.error(chalk.red(error.message));
+    return console.error(error.message);
   }
 };
 
