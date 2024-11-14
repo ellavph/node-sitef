@@ -23,9 +23,11 @@
         "lib/nodesitef.cpp"
       ],
       "include_dirs": [
-        "/home/phillipi/PycharmProjects/node-sitef/node_modules/node-addon-api"
+        "<!@(node -p \"require('node-addon-api').include\")"
       ],
       'defines': [ 'NAPI_DISABLE_CPP_EXCEPTIONS' ],
     }
   ]
 }
+
+# "/home/phillipi/PycharmProjects/node-sitef/node_modules/node-addon-api"
