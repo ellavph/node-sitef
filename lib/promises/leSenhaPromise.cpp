@@ -22,7 +22,7 @@ public:
 protected:
   void Execute() override
   {
-    result = leSimNaoPinPad(mensagem.c_str());
+    result = leSenha(mensagem.c_str());
   }
 
   virtual void OnOK() override
