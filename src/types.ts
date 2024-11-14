@@ -8,7 +8,10 @@ export interface ILibrary {
     parametrosAdicionais: string
   ) => number;
   verificaPresencaPinPad: () => number;
+  
   leSimNaoPinPad: (mensagem: string) => number;
+  leSenha: (chaveSeguranca: string) => number;
+
   escreveMensagemPermanentePinPad: (mensagem: string) => number;
   iniciaFuncaoSiTefInterativo: (
     funcao: number,

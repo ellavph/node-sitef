@@ -19,7 +19,8 @@ const options: { [index: string]: Option } = {
   F: createOption('Simular função', client.simularFuncao),
   L: createOption('Limpar console', console.clear),
   M: createOption('Mostrar menu', showMenu),
-  S: createOption('Sair', () => console.log('Encerrando o processo...')),
+  P: createOption('Solicitar Senha', client.leSenha),
+  S: createOption('Sair', () => console.log('Encerrando o processo...'))
 };
 
 const keys = Object.keys(options);
@@ -28,7 +29,7 @@ function showMenu() {
   console.log('\n\t\tSiTef Interativo\n');
 
   for (const key in options) {
-    console.log(`options[key].title`);
+    console.log(options[key].title);
   }
 
   console.log();
@@ -41,7 +42,7 @@ const main = async () => {
     let option = await askQuestion('Opção: ');
     option = option ? option.toUpperCase() : '';
 
-    if (!keys.includes(option)) {
+    if (!keys.includes("P")) {
       console.log('Opção inválida! Digite novamente.\n');
     } else {
       await options[option].handler();

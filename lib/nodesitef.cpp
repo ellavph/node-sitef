@@ -110,6 +110,29 @@ int leSimNaoPinPad(const char *mensagem)
   return escreveMensagem(mensagem);
 }
 
+int leSenha(const char *mensagem)
+{
+  if (!handler)
+    throw std::runtime_error("Carregue a DLL do SiTef!");
+
+  // Carrega a função LeSenha da DLL
+  LeSenha leSenhaFunc = nullptr;
+
+  #ifdef _WIN32
+  leSenhaFunc = (LeSenha)GetProcAddress(handler, "LeSenhaInterativo");
+  #endif
+
+  #ifdef linux
+  leSenhaFunc = (LeSenha)dlsym(handler, "LeSenhaInterativo");
+  #endif
+
+  if (!leSenhaFunc)
+    throw std::runtime_error("Função LeSenha não encontrada!");
+
+  // Chama a função LeSenha e retorna o resultado
+  return leSenhaFunc(mensagem);
+}
+
 int iniciaFuncaoSiTefInterativo(int funcao, const char *valor, const char *cupomFiscal, const char *dataFiscal, const char *horaFiscal, const char *operador, const char *paramAdicionais)
 {
   if (!handler)
@@ -207,6 +230,9 @@ Object Init(Env env, Object exports)
       String::New(env, "finalizaFuncaoSiTefInterativo"),
       Function::New(env, FinalizaFuncaoPromise::Create));
 
+  exports.Set(
+  String::New(env, "leSenha"),
+  Function::New(env, LeSenhaPromise::Create));
   return exports;
 }
 

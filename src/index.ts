@@ -18,7 +18,7 @@ export default class SiTef {
       throw new Error('Informe o caminho para as DLLs do SiTef.');
     }
 
-    const result = library.carregarDLL(path);
+    const result = library.carregarDLL('/usr/lib/libclisitef_prd.so');
     if (!result) {
       throw new Error('Não foi possível carregar as DLLs do SiTef.');
     }
@@ -54,7 +54,13 @@ export default class SiTef {
     return createPromise<number>(() => {
       return library.leSimNaoPinPad(mensagem);
     });
-  }
+  };
+
+  leSenha(chaveSeguranca: string): Promise<string> {
+    return createPromise<string>(() => {
+      return library.leSenha(chaveSeguranca);
+    });
+  };
 
   iniciarFuncao(parametros: IParametrosIniciarFuncao): Promise<number> {
     return createPromise<number>(() => {

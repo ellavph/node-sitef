@@ -35,6 +35,7 @@ typedef int (*ContinuaFuncaoSiTefInterativo)(int *, long *, int *, int *, const 
 typedef void (*FinalizaFuncaoSiTefInterativo)(short, const char *, const char *, const char *, const char *);
 typedef int (*EscreveMensagemPermanentePinPad)(const char *);
 typedef int (*LeSimNaoPinPad)(const char *);
+typedef int (*LeSenha)(const char *);
 
 Value carregarDLL(const CallbackInfo &info);
 
@@ -42,6 +43,7 @@ int verificaPresencaPinPad();
 int configuraIntSiTefInterativo(const char *, const char *, const char *, const char *, const char *);
 int escreveMensagemPermanentePinPad(const char *);
 int leSimNaoPinPad(const char *);
+int leSenha(const char *);
 int iniciaFuncaoSiTefInterativo(int, const char *, const char *, const char *, const char *, const char *, const char *);
 int continuaFuncaoSiTefInterativo(int *comando, long *tipoCampo, int *tamMinimo, int *tamMaximo, char *buffer, int tamBuffer, int continua);
 void finalizaFuncaoSiTefInterativo(int confirma, const char *cupomFiscal, const char *dataFiscal, const char *horaFiscal, const char *paramAdicionais);

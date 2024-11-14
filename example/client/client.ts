@@ -136,3 +136,18 @@ export const simularFuncao = async () => {
     handleError(error);
   }
 };
+
+
+export const leSenha = async () => {
+  try {
+
+    // Escreve a mensagem e processa o retorno
+    const response = await sitef.leSenha('##112');
+    response === '0'
+        ? 'Mensagem escrita com sucesso.'
+        : 'Não foi possível escrever a mensagem.';
+
+  } catch (error) {
+    handleError(error);
+  }
+};
