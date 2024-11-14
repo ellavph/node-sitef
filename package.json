@@ -1,9 +1,7 @@
 {
   "name": "sitef-voai",
-  "version": "1.0.4",
+  "version": "1.1.6",
   "description": "Arquivos para utilização da Sitef",
-  "repository": "https://bitbucket.org/inteliger_git/voai_sitef",
-  "homepage": "https://bitbucket.org/inteliger_git/voai_sitef",
   "author": {
     "name": "Inteliger",
     "email": "sistemas@inteliger.com.br",
