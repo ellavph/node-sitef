@@ -18,7 +18,7 @@ export default class SiTef {
       throw new Error('Informe o caminho para as DLLs do SiTef.');
     }
 
-    const result = library.carregarDLL('/usr/lib/libclisitef_prd.so');
+    const result = library.carregarDLL(path);
     if (!result) {
       throw new Error('Não foi possível carregar as DLLs do SiTef.');
     }
