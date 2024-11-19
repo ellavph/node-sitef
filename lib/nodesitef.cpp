@@ -173,6 +173,40 @@ void finalizaFuncaoSiTefInterativo(int confirma, const char *cupomFiscal, const 
   finalizaFuncao(confirma, cupomFiscal, dataFiscal, horaFiscal, paramAdicionais);
 }
 
+int lePinblockDireto(int iModoCripto,
+                     const char *lpcCartao,
+                     const char *lpcTuiccs,
+                     int iTimeout,
+                     const char *lpcParamAdic,
+                    //  short (*pTstCancela)(void),
+                     int iTamMsg,
+                     const char *lpcMsg)
+{
+    if (!handler)
+      throw("Carregue a DLL do SiTef!");
+
+    #ifdef _WIN32
+    LePinblockDireto lePinblockFunc = (LePinblockDireto)GetProcAddress(handler, "LePinblockDireto");
+    #endif
+
+    #ifdef linux
+    LePinblockDireto lePinblockFunc = (LePinblockDireto)dlsym(handler, "LePinblockDireto");
+    #endif
+
+    // Verifica se a função foi carregada corretamente
+    if (!lePinblockFunc)
+        throw std::runtime_error("Falha ao carregar a função LePinblockDireto!");
+
+    // Chama a função
+    return lePinblockFunc(iModoCripto,
+                          lpcCartao,
+                          lpcTuiccs,
+                          iTimeout,
+                          lpcParamAdic,
+                          iTamMsg,
+                          lpcMsg);
+}
+
 Object Init(Env env, Object exports)
 {
   exports.Set(
@@ -206,6 +240,10 @@ Object Init(Env env, Object exports)
   exports.Set(
       String::New(env, "finalizaFuncaoSiTefInterativo"),
       Function::New(env, FinalizaFuncaoPromise::Create));
+
+  exports.Set(
+    String::New(env, "lePinBlockDireto"),
+    Function::New(env, LePinblockDiretoPromise::Create));
 
   return exports;
 }

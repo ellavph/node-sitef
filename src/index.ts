@@ -7,6 +7,7 @@ import {
   IParametrosContinuarFuncao,
   IParametrosFinalizarFuncao,
   IResultadoContinuarFuncao,
+  IParametrosLerPinBlockDireto
 } from './types';
 import { createPromise } from './utils';
 
@@ -94,6 +95,21 @@ export default class SiTef {
         parametros.dataFiscal,
         parametros.horaFiscal,
         parametros.parametros
+      );
+    });
+  }
+
+
+  lerPinBlockDireto(parametros: IParametrosLerPinBlockDireto): Promise<IParametrosLerPinBlockDireto> {
+    return createPromise<IParametrosLerPinBlockDireto>(() => {
+      return library.lePinBlockDireto(
+        parametros.iModoCripto,
+        parametros.lpcCartao,
+        parametros.lpcTuiccs,
+        parametros.iTimeout,
+        parametros.lpcParamAdic,
+        parametros.TamMsg,
+        parametros.lpcMsg
       );
     });
   }

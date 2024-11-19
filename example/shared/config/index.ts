@@ -2,11 +2,11 @@ import 'dotenv/config';
 import { IParametrosConfiguracao } from '../../../src/types';
 
 const config: IParametrosConfiguracao = {
-  ip: process.env.SITEF_IP || '0.0.0.0',
-  loja: process.env.SITEF_LOJA || '00000000',
-  terminal: process.env.SITEF_TERMINAL || '00000000',
+  ip: '1=192.168.250.10;2=192.168.43.218',
+  loja: '00000139',
+  terminal: '00000051',
   reservado: process.env.SITEF_RESERVADO || '',
-  parametrosAdicionais: process.env.SITEF_RESERVADO || '[00000000000000;00000000000000]',
+  parametrosAdicionais: '[79430682025540;08568632000168]',
 };
 
 export default config;

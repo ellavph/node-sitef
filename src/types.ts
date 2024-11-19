@@ -35,6 +35,16 @@ export interface ILibrary {
     horaFiscal: string,
     parametros: string
   ) => boolean;
+
+  lePinBlockDireto: (
+    iModoCripto: number,
+    lpcCartao: string,
+    lpcTuiccs: string,
+    iTimeout: number,
+    lpcParamAdic: string,
+    TamMsg: number,
+    lpcMsg: string
+  ) => IParametrosLerPinBlockDireto;
 }
 
 export interface IParametrosConfiguracao {
@@ -76,4 +86,14 @@ export interface IParametrosFinalizarFuncao {
   dataFiscal: string;
   horaFiscal: string;
   parametros: string;
+}
+
+export interface IParametrosLerPinBlockDireto {
+  iModoCripto: number,
+  lpcCartao: string,
+  lpcTuiccs: string,
+  iTimeout: number,
+  lpcParamAdic: string,
+  TamMsg: number,
+  lpcMsg: string
 }

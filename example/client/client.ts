@@ -8,7 +8,7 @@ import config from '../shared/config';
 import { messages, askQuestion, handleError } from '../shared/utils';
 
 // Define o caminho para as DLLs do SiTef e instancia o client
-const dlls = path.resolve(__dirname, '..', 'shared', 'bin', 'CliSiTef64I.dll');
+const dlls = path.resolve('/usr/lib/libclisitef_prd.so');
 const sitef = new SiTef(dlls);
 
 
@@ -101,9 +101,9 @@ export const simularFuncao = async () => {
       retorno = ret;
 
       // Escreve as mensagens de retorno e de buffer, caso retornado alguma
-      console.log(
-        messages.funcao[ret] || `Retorno desconhecido (${ret})`
-      );
+      // console.log(
+      //   messages.funcao[ret] || `Retorno desconhecido (${ret})`
+      // );
       if (buffer) console.log( buffer);
 
       // Limpa ou escreve no buffer, dependendo do comando
@@ -136,3 +136,28 @@ export const simularFuncao = async () => {
     handleError(error);
   }
 };
+
+
+export const lerPinBlockDireto = async () => {
+  // parametros.iModoCripto,
+  // parametros.lpcCartao,
+  // parametros.lpcTuiccs,
+  // parametros.iTimeout,
+  // parametros.lpcParamAdic,
+  // parametros.TamMsg,
+  // parametros.lpcMsg
+  let response
+
+  response = await sitef.lerPinBlockDireto(
+                          {
+                            iModoCripto: 0,
+                            lpcCartao: '990440',
+                            lpcTuiccs: '6183A18A050B32C7DD80261F53F5147CA5EA7C5D6788605D1E1C7669789308D7CC3C4B98FCC855A779C9D690BCCFBAB613E29BE865339CDD5A123D0E36850AF8E904010150D18382F8C48D9B02EDF146521D85315C5F6C54758E85A0E83073C544A46E50793C677D93B984087971D5FA1766D9B7BDB77C942B7A5E1001B7D55D22961DD011E17F0CC4946A3877E77258BD7C3121C37F30533130FCD6AB563E8F1D23F2373B51B2D09EA0F5658704F7BE02AAD05753783B732FBF917A72193E167BDDA404E6FCD3CBE1EA93C2D7659BF07E24AB198006285FDDE30F56730537924E3C10DBC69E11288C10A437E592F3A82505803C0485BA51113CC8146EF18F0B1F2B',
+                            iTimeout: 300,
+                            lpcParamAdic: '{ColetaSenhaTamMin=4;ColetaSenhaTamMax=12}',
+                            TamMsg: 199,
+                            lpcMsg: 'teste'
+                          }
+                        )
+  console.log(response)
+}

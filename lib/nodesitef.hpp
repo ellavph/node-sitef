@@ -35,6 +35,7 @@ typedef int (*ContinuaFuncaoSiTefInterativo)(int *, long *, int *, int *, const 
 typedef void (*FinalizaFuncaoSiTefInterativo)(short, const char *, const char *, const char *, const char *);
 typedef int (*EscreveMensagemPermanentePinPad)(const char *);
 typedef int (*LeSimNaoPinPad)(const char *);
+typedef int (*LePinblockDireto)(int, const char *, const char *, int, const char *, int, const char *);
 
 Value carregarDLL(const CallbackInfo &info);
 
@@ -44,6 +45,9 @@ int escreveMensagemPermanentePinPad(const char *);
 int leSimNaoPinPad(const char *);
 int iniciaFuncaoSiTefInterativo(int, const char *, const char *, const char *, const char *, const char *, const char *);
 int continuaFuncaoSiTefInterativo(int *comando, long *tipoCampo, int *tamMinimo, int *tamMaximo, char *buffer, int tamBuffer, int continua);
+int lePinblockDireto(int, const char *lpcCartao, const char *lpcTuicss, int, const char *lpcParamAdc, int, const char *lpcMsg);
 void finalizaFuncaoSiTefInterativo(int confirma, const char *cupomFiscal, const char *dataFiscal, const char *horaFiscal, const char *paramAdicionais);
+
+
 
 #endif /* NODESITEF_H */

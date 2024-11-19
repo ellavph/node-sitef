@@ -19,6 +19,7 @@ const options: { [index: string]: Option } = {
   F: createOption('Simular função', client.simularFuncao),
   L: createOption('Limpar console', console.clear),
   M: createOption('Mostrar menu', showMenu),
+  X: createOption('Ler PinBlock', client.lerPinBlockDireto),
   S: createOption('Sair', () => console.log('Encerrando o processo...')),
 };
 
@@ -28,7 +29,7 @@ function showMenu() {
   console.log('\n\t\tSiTef Interativo\n');
 
   for (const key in options) {
-    console.log(`options[key].title`);
+    console.log(`${key} - ${options[key].title}`);
   }
 
   console.log();

@@ -8,5 +8,6 @@
 #include "iniciaFuncaoPromise.cpp"
 #include "continuaFuncaoPromise.cpp"
 #include "finalizaFuncaoPromise.cpp"
+#include "lePinBlockDiretoPromise.cpp"
 
 #endif
