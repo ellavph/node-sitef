@@ -17,7 +17,7 @@ export interface ILibrary {
     dataFiscal: string,
     horaFiscal: string,
     operador: string,
-    parametros: string
+    paramAdicionais: string
   ) => number;
   continuaFuncaoSiTefInterativo: (
     comando: number,
@@ -52,7 +52,7 @@ export interface IParametrosIniciarFuncao {
   dataFiscal: string;
   horaFiscal: string;
   operador: string;
-  parametros?: string;
+  paramAdicionais?: string;
 }
 
 export interface IParametrosContinuarFuncao

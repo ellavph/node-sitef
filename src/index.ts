@@ -65,7 +65,7 @@ export default class SiTef {
         parametros.dataFiscal,
         parametros.horaFiscal,
         parametros.operador,
-        parametros.parametros || ''
+        parametros.paramAdicionais || ''
       );
     });
   }
